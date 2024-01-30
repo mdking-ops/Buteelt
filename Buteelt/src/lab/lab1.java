@@ -5,6 +5,7 @@ public class lab1 {
         System.out.println("Hello, World!");
         System.out.println("snu snu snu");
         System.out.println("2:37");
+        System.out.println("sain2");
 
         
 
