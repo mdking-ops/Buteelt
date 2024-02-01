@@ -7,7 +7,8 @@ public class lab1 {
         System.out.println("2:37");
         System.out.println("sain2");
         System.out.println("Zorigt11");
-
+        System.out.println("Zorigt11");  
+        System.out.println("Zorigt11");
         
 
     }
