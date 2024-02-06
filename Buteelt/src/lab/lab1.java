@@ -10,6 +10,7 @@ public class lab1 {
         System.out.println("Zorigt11");  
         System.out.println("Zorigt11");
         System.out.print("asad");
+        System.out.println("1");
         
 
     }
