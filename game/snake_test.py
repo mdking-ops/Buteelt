@@ -8,7 +8,7 @@ class TestBorderCollision(unittest.TestCase):
         self.head = turtle.Turtle()
 
     def test_border_collision(self):
-        # Set head position outside the border
+        # Set head position outside the borderr
         self.head.goto(300, 0)
         # Assert that collision is detected
         self.assertTrue(check_border_collision(self.head))
