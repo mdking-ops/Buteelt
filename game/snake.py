@@ -11,7 +11,7 @@ high_score = 0
 # Дэлгэцээ тохируулах
 wn = turtle.Screen()
 wn.title("Snake Game")
-wn.bgcolor("#b0f7d8")
+wn.bgcolor("#fff5e3")
 wn.setup(width=600, height=600)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
@@ -19,7 +19,7 @@ wn.tracer(0)  # дэлгэц шинэчлэх
 head = turtle.Turtle()
 head.speed(10)
 head.shape("square")
-head.color("white")
+head.color("#aef0d1")
 head.penup()
 head.goto(0, 0)
 head.direction = "Stop"
@@ -27,7 +27,7 @@ head.direction = "Stop"
 food = turtle.Turtle()
 food.speed(0)
 food.shape("circle")
-food.color("red")
+food.color("#e84c3e")
 food.penup()
 food.goto(0, 100)
 
@@ -128,7 +128,7 @@ while True:
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         new_segment.shape("square")
-        new_segment.color("brown")
+        new_segment.color("#23b99a")
         new_segment.penup()
         segments.append(new_segment)
 
