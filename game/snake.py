@@ -15,28 +15,16 @@ wn.bgcolor("#fff5e3")
 wn.setup(width=600, height=700)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
-# Create a new turtle for the border
+
 border = turtle.Turtle()
-
-# Lift the pen up – no drawing when moving
 border.penup()
-
-# Move the turtle to the edge of the screen
 border.goto(-300, -300)
-
-# Put the pen down – drawing when moving
 border.pendown()
 
-# Create a new turtle for the score display
+
 score_display = turtle.Turtle()
-
-# Lift the pen up – no drawing when moving
 score_display.penup()
-
-# Move the turtle to the top of the screen (adjust according to your border)
 score_display.goto(0, 310)  # This position is above the border
-
-# Hide the turtle but keep the text
 score_display.hideturtle()
 
 for _ in range(4):
