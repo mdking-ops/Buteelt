@@ -12,7 +12,7 @@ high_score = 0
 wn = turtle.Screen()
 wn.title("Snake Game")
 wn.bgcolor("#fff5e3")
-wn.setup(width=600, height=600)
+wn.setup(width=600, height=700)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
 # Create a new turtle for the border
@@ -26,6 +26,18 @@ border.goto(-300, -300)
 
 # Put the pen down – drawing when moving
 border.pendown()
+
+# Create a new turtle for the score display
+score_display = turtle.Turtle()
+
+# Lift the pen up – no drawing when moving
+score_display.penup()
+
+# Move the turtle to the top of the screen (adjust according to your border)
+score_display.goto(0, 310)  # This position is above the border
+
+# Hide the turtle but keep the text
+score_display.hideturtle()
 
 for _ in range(4):
     border.forward(600)  # Length of each side
@@ -60,7 +72,8 @@ pen.color("black")
 pen.penup()
 pen.hideturtle()  #turtle курсороо нуух
 pen.goto(0, 260)
-pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
+
+score_display.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
 #Үйлдлүүд
 #Үйлдлүүд
@@ -133,8 +146,8 @@ while True:
         # хурдаа шинэчлэх
         delay = 0.05
 
-        pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+        score_display.clear()
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     # Хоолонд хүрсэн эсэхээ шалгах
     if head.distance(food) < 20:
@@ -160,8 +173,8 @@ while True:
         if score > high_score:
             high_score = score
 
-        pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+        score_display.clear()
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     # Толгойгоо дагах буюу сегмент бүр нь үргэлжилсэн биеийн дүр төрхийг хадгалахын тулд урд талынхыг дагуулах
     for index in range(len(segments) - 1, 0, -1):
@@ -197,8 +210,8 @@ while True:
             # Хурдаа шинэчлэх
             delay = 0.05
 
-            pen.clear()
-            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+            score_display.clear()
+            score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
    
     time.sleep(delay) 
