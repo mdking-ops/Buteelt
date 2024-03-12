@@ -1,7 +1,7 @@
 import turtle
 import time
 import random
-
+#10:29
 def main():
     delay = 0.09
     # Set up the screen
