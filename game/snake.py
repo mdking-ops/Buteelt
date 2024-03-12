@@ -15,12 +15,10 @@ wn.bgcolor("#fff5e3")
 wn.setup(width=600, height=700)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
-
 border = turtle.Turtle()
 border.penup()
 border.goto(-300, -300)
 border.pendown()
-
 
 score_display = turtle.Turtle()
 score_display.penup()
