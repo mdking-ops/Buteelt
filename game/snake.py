@@ -4,19 +4,19 @@ import random
 
 delay = 0.05
 
-# Score
+#Огоо
 score = 0
 high_score = 0
 
-# Set up the screen
+# Дэлгэцээ тохируулах
 wn = turtle.Screen()
 wn.title("Snake Game")
 wn.bgcolor("green")
 wn.setup(width=600, height=600)
-wn.tracer(0)  # Turns off the screen updates
+wn.tracer(0)  # дэлгэц шинэчлэх
 
-# Snake head
-head = turtle.Turtle() #creating object called head.
+#Могойн толгой
+head = turtle.Turtle() #
 head.speed(10)
 head.shape("square")
 head.color("white")
