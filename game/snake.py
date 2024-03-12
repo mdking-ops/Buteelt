@@ -4,7 +4,7 @@ import random
 
 delay = 0.05
 
-#Огоо
+#Оноо
 score = 0
 high_score = 0
 
@@ -23,7 +23,7 @@ head.color("white")
 head.penup()
 head.goto(0, 0)
 head.direction = "Stop"
-# Snake food
+#Могойн хоол
 food = turtle.Turtle()
 food.speed(0)
 food.shape("circle")
@@ -33,18 +33,18 @@ food.goto(0, 100)
 
 segments = []
 
-# Pen
+#Pen
 pen = turtle.Turtle()
 pen.speed(0)
 pen.shape("square")
 pen.color("black")
 pen.penup()
-pen.hideturtle()  #hiding the turtle cursor
+pen.hideturtle()  #turtle курсороо нуух
 pen.goto(0, 260)
 pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
 
-# Functions
+#Үйлдлүүд
 def go_up():
         head.direction = "up"
 
@@ -78,17 +78,17 @@ def move():
         x = head.xcor()
         head.setx(x + 20)
 
-# Keyboard bindings
+#Keyboard ажиллагаа
 wn.listen()
 wn.onkeypress(go_up, "Up")
 wn.onkeypress(go_down, "Down")
 wn.onkeypress(go_left, "Left")
 wn.onkeypress(go_right, "Right")
 
-# Main game loop
+# Үндсэн тоглоомын давталт
 while True:
     wn.update()
-    # Check for a collision with the border
+    # Хүрээнд хүрсэн эсэхийг шалгах
     if (
         head.xcor() > 290
         or head.xcor() < -290
@@ -106,23 +106,23 @@ while True:
         # Clear the segments list
         segments.clear()
 
-        # Reset the score
+        # Оноогоо шинэчлэх
         score = 0
 
-        # Reset the delay
+        # хурдаа шинэчлэх
         delay = 0.05
 
         pen.clear()
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("italic", 24, "normal"))
 
-    # Check for a collision with the food
+    # Хоолонд хүрсэн эсэхээ шалгах
     if head.distance(food) < 20:
-        # Move the food to a random position
+        #Дурын байрлал руу шил
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
         food.goto(x, y)
 
-        # Add a segment to the snake
+        # Mогойг
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         new_segment.shape("square")
@@ -130,10 +130,10 @@ while True:
         new_segment.penup()
         segments.append(new_segment)
 
-        # Shorten the delay
+        #Хурдсах
         delay -= 0.001
 
-        # Increase the score
+        #Оноогоо нэмэх
         score += 10
 
         if score > high_score:
@@ -156,7 +156,7 @@ while True:
 
     move()
 
-    # Check for a collision with the body
+    # Бусад давхцалыг шалгах
     for segment in segments:
         if segment.distance(head) < 20:
             time.sleep(1)
@@ -170,10 +170,10 @@ while True:
             # Clear the segments list
             segments.clear()
 
-            # Reset the score
+            # Оноогоо шинэчлэх
             score = 0
 
-            # Reset the delay
+            # Хурдаа шинэчлэх
             delay = 0.05
 
             pen.clear()
