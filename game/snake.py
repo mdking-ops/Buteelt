@@ -16,7 +16,7 @@ wn.setup(width=600, height=600)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
 #Могойн толгой
-head = turtle.Turtle() #
+head = turtle.Turtle()
 head.speed(10)
 head.shape("square")
 head.color("white")
@@ -44,19 +44,22 @@ pen.goto(0, 260)
 pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
 #Үйлдлүүд
+#Үйлдлүүд
 def go_up():
+    if head.direction != "down":
         head.direction = "up"
 
-
 def go_down():
+    if head.direction != "up":   
         head.direction = "down"
 
 
 def go_left():
-         head.direction = "left"
-
+    if head.direction != "right":  
+        head.direction = "left"
 
 def go_right():
+    if head.direction != "left": 
         head.direction = "right"
 
 
@@ -141,13 +144,13 @@ while True:
         pen.clear()
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
-    # Move the end segments first in reverse order
+    # Толгойгоо дагах буюу сегмент бүр нь үргэлжилсэн биеийн дүр төрхийг хадгалахын тулд урд талынхыг дагуулах
     for index in range(len(segments) - 1, 0, -1):
         x = segments[index - 1].xcor()
         y = segments[index - 1].ycor()
         segments[index].goto(x, y)
 
-    # Move segment 0 to where the head is
+    # Анхны сегмэнтийн хөдөлгөөн
     if len(segments) > 0:
         x = head.xcor()
         y = head.ycor()
@@ -162,7 +165,7 @@ while True:
             head.goto(0, 0)
             head.direction = "Stop"
 
-            # Hide the segments
+            # Давхцал үүсэх үед бусад сегментээ нуух
             for segment in segments:
                 segment.goto(1000, 1000)
 
