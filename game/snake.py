@@ -4,7 +4,7 @@ import random
 
 delay = 0.05
 
-#Оноо
+# Оноо
 score = 0
 high_score = 0
 
@@ -15,14 +15,51 @@ wn.bgcolor("#fff5e3")
 wn.setup(width=600, height=700)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
+# Create a start screen
+start_screen = turtle.Screen()
+start_screen.title("Snake Game - Start")
+start_screen.bgcolor("#f0f0f0")
+start_screen.setup(width=600, height=700)
+
+start_text = turtle.Turtle()
+start_text.speed(0)
+start_text.color("black")
+start_text.penup()
+start_text.hideturtle()
+start_text.goto(0, 0)
+start_text.write("Press any key to start", align="center", font=("Courier", 24, "normal"))
+
+# Function to hide the start screen
+def hide_start_screen():
+    start_screen.clear()
+    start_screen.bgcolor("#fff5e3")
+
+# Keyboard event to hide the start screen and start the game
+start_screen.listen()
+start_screen.onkeypress(hide_start_screen)
+
+# Create a new turtle for the border
 border = turtle.Turtle()
+
+# Lift the pen up – no drawing when moving
 border.penup()
+
+# Move the turtle to the edge of the screen
 border.goto(-300, -300)
+
+# Put the pen down – drawing when moving
 border.pendown()
 
+# Create a new turtle for the score display
 score_display = turtle.Turtle()
+
+# Lift the pen up – no drawing when moving
 score_display.penup()
+
+# Move the turtle to the top of the screen (adjust according to your border)
 score_display.goto(0, 310)  # This position is above the border
+
+# Hide the turtle but keep the text
 score_display.hideturtle()
 
 for _ in range(4):
@@ -59,7 +96,7 @@ pen.penup()
 pen.hideturtle()  #turtle курсороо нуух
 pen.goto(0, 260)
 
-score_display.write("Score: 0  High Score: 0", align="center", font=("Retro.tff", 24, "normal"))
+score_display.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
 #Үйлдлүүд
 #Үйлдлүүд
@@ -133,7 +170,7 @@ while True:
         delay = 0.05
 
         score_display.clear()
-        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     # Хоолонд хүрсэн эсэхээ шалгах
     if head.distance(food) < 20:
@@ -160,7 +197,7 @@ while True:
             high_score = score
 
         score_display.clear()
-        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     # Толгойгоо дагах буюу сегмент бүр нь үргэлжилсэн биеийн дүр төрхийг хадгалахын тулд урд талынхыг дагуулах
     for index in range(len(segments) - 1, 0, -1):
@@ -197,7 +234,7 @@ while True:
             delay = 0.05
 
             score_display.clear()
-            score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
+            score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
    
     time.sleep(delay) 
