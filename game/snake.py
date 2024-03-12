@@ -115,7 +115,7 @@ while True:
         delay = 0.05
 
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("italic", 24, "normal"))
+        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     # Хоолонд хүрсэн эсэхээ шалгах
     if head.distance(food) < 20:
