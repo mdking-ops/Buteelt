@@ -11,7 +11,7 @@ high_score = 0
 # Дэлгэцээ тохируулах
 wn = turtle.Screen()
 wn.title("Snake Game")
-wn.bgcolor("green")
+wn.bgcolor("#b0f7d8")
 wn.setup(width=600, height=600)
 wn.tracer(0)  # дэлгэц шинэчлэх
 
