@@ -1,7 +1,6 @@
 import turtle
 import time
 import random
-import curses
 
 delay = 0.05
 
@@ -15,6 +14,25 @@ wn.title("Snake Game")
 wn.bgcolor("#fff5e3")
 wn.setup(width=600, height=600)
 wn.tracer(0)  # дэлгэц шинэчлэх
+
+# Create a new turtle for the border
+border = turtle.Turtle()
+
+# Lift the pen up – no drawing when moving
+border.penup()
+
+# Move the turtle to the edge of the screen
+border.goto(-300, -300)
+
+# Put the pen down – drawing when moving
+border.pendown()
+
+for _ in range(4):
+    border.forward(600)  # Length of each side
+    border.left(90)  # Turn left
+
+# Hide the border turtle
+border.hideturtle()
 
 #Могойн толгой
 head = turtle.Turtle()
