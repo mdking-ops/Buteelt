@@ -43,7 +43,6 @@ pen.hideturtle()  #turtle курсороо нуух
 pen.goto(0, 260)
 pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
-
 #Үйлдлүүд
 def go_up():
         head.direction = "up"
