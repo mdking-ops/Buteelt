@@ -11,15 +11,32 @@ high_score = 0
 # Дэлгэцээ тохируулах
 wn = turtle.Screen()
 wn.title("Snake Game")
-wn.bgcolor("#b0f7d8")
-wn.setup(width=600, height=600)
+wn.bgcolor("#fff5e3")
+wn.setup(width=600, height=700)
 wn.tracer(0)  # дэлгэц шинэчлэх
+
+border = turtle.Turtle()
+border.penup()
+border.goto(-300, -300)
+border.pendown()
+
+score_display = turtle.Turtle()
+score_display.penup()
+score_display.goto(0, 310)  # This position is above the border
+score_display.hideturtle()
+
+for _ in range(4):
+    border.forward(600)  # Length of each side
+    border.left(90)  # Turn left
+
+# Hide the border turtle
+border.hideturtle()
 
 #Могойн толгой
 head = turtle.Turtle()
 head.speed(10)
 head.shape("square")
-head.color("white")
+head.color("#aef0d1")
 head.penup()
 head.goto(0, 0)
 head.direction = "Stop"
@@ -27,7 +44,7 @@ head.direction = "Stop"
 food = turtle.Turtle()
 food.speed(0)
 food.shape("circle")
-food.color("red")
+food.color("#e84c3e")
 food.penup()
 food.goto(0, 100)
 
@@ -41,7 +58,8 @@ pen.color("black")
 pen.penup()
 pen.hideturtle()  #turtle курсороо нуух
 pen.goto(0, 260)
-pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
+
+score_display.write("Score: 0  High Score: 0", align="center", font=("Retro.tff", 24, "normal"))
 
 #Үйлдлүүд
 #Үйлдлүүд
@@ -114,8 +132,8 @@ while True:
         # хурдаа шинэчлэх
         delay = 0.05
 
-        pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("italic", 24, "normal"))
+        score_display.clear()
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
 
     # Хоолонд хүрсэн эсэхээ шалгах
     if head.distance(food) < 20:
@@ -128,7 +146,7 @@ while True:
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         new_segment.shape("square")
-        new_segment.color("brown")
+        new_segment.color("#23b99a")
         new_segment.penup()
         segments.append(new_segment)
 
@@ -141,8 +159,8 @@ while True:
         if score > high_score:
             high_score = score
 
-        pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+        score_display.clear()
+        score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
 
     # Толгойгоо дагах буюу сегмент бүр нь үргэлжилсэн биеийн дүр төрхийг хадгалахын тулд урд талынхыг дагуулах
     for index in range(len(segments) - 1, 0, -1):
@@ -178,7 +196,9 @@ while True:
             # Хурдаа шинэчлэх
             delay = 0.05
 
-            pen.clear()
-            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+            score_display.clear()
+            score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Retro.tff", 24, "normal"))
 
-    time.sleep(delay)
+   
+    time.sleep(delay) 
+    
