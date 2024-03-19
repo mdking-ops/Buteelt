@@ -8,7 +8,7 @@ def start_game_window():
     root.destroy()
 
     # Game logic
-    delay = 0.05
+    delay = 0.075
 
     # Score
     score = 0
@@ -121,7 +121,7 @@ def start_game_window():
             segments.clear()
 
             score = 0
-            delay = 0.05
+            delay = 0.075
 
             score_display.clear()
             score_display.write("Оноо: {}  Хамгийн өндөр оноо: {}".format(score, high_score), align="center", font=("Helvetica", 24, "normal"))
@@ -171,7 +171,7 @@ def start_game_window():
                 segments.clear()
 
                 score = 0
-                delay = 0.05
+                delay = 0.075
 
                 score_display.clear()
                 score_display.write("Оноо: {}  Хамгийн өндөр оноо: {}".format(score, high_score), align="center", font=("Helvetica", 24, "normal"))
@@ -187,7 +187,7 @@ root.title("Game Menu")
 
 # Set the geometry of the main menu window to match the game window and center it
 game_width = 600
-game_height = 700
+game_height = 600
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 x_coordinate = (screen_width - game_width) // 2
