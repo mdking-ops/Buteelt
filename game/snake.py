@@ -1,20 +1,21 @@
 import tkinter as tk
+from tkinter import PhotoImage
 import turtle
 import time
 import random
 
 def start_game_window():
-    # Close main menu window
+    # Main menu хаах хэсэг
     root.destroy()
 
-    # Game logic
+
     delay = 0.05
 
-    # Score
+    # Оноо
     score = 0
     high_score = 0
 
-    # Set up the screen
+    # Дэлгэц тохируулах хэсэг 
     wn = turtle.Screen()
     wn.title("Snake Game")
     wn.bgcolor("#fff5e3")
@@ -185,7 +186,7 @@ def start_game():
 root = tk.Tk()
 root.title("Game Menu")
 
-# Set the geometry of the main menu window to match the game window and center it
+# Main menu хэсгийн window тохируулга урт , өргөн , дэлгэцний хаана гарч ирэх  
 game_width = 600
 game_height = 700
 screen_width = root.winfo_screenwidth()
@@ -194,27 +195,39 @@ x_coordinate = (screen_width - game_width) // 2
 y_coordinate = (screen_height - game_height) // 2
 root.geometry(f"{game_width}x{game_height}+{x_coordinate}+{y_coordinate}")
 
-# Change background color
+# Арын өнгө тохируулга
 root.configure(bg="#fff5e3")  
 
-# Instructions label
-instructions_label = tk.Label(root, text="Заавар\n\n\n 1.Могойг зөвхөн сум ашиглан удирдана.\n\n2.Санамсаргүй гарч ирэх хоолыг идсэнээр могой урт болно.\n\n3.Ханыг мөргөх үед тоглоом дуусна\n\n4.Өөрийнхөө биед хүрвэл тоглоом дуусна!", font=("Helvetica", 14), wraplength=game_width-40, bg="#f0f0f0")  # Match background color
+
+# Load the snake image using PhotoImage
+try:
+    image = PhotoImage(file="snake.png")  # Replace "snake.png" with your image path
+except FileNotFoundError:
+    print("Error: Image file 'snake.png' not found. Please check the path.")
+    exit()
+
+# Create a label to display the image
+image_label = tk.Label(root, image=image)
+image_label.pack(pady=20)
+
+#  Зааврын Label
+instructions_label = tk.Label(root, text="Заавар\n\n\n 1.Могойг зөвхөн сум ашиглан удирдана.\n\n2.Санамсаргүй гарч ирэх хоолыг идсэнээр могой урт болно.\n\n3.Ханыг мөргөх үед тоглоом дуусна\n\n4.Өөрийнхөө биед хүрвэл тоглоом дуусна!", font=("Helvetica", 14), wraplength=game_width-40, bg="#E5DCCC") 
 instructions_label.pack(pady=20)
 
-# Function to start the game
+# Тоглоом эхлүүлэх функц
 def start_game():
     start_game_window()
 
-# Button to start the game
-start_button = tk.Button(root, text="Play Game", font=("Helvetica", 16), command=start_game, bg="#4CAF50", fg="white")  # Green button with white text
+# Тоглоом эхлүүлэх товч
+start_button = tk.Button(root, text="Тоглох", font=("Helvetica", 16), command=start_game, bg="#E5DCCC", fg="black")  
 start_button.pack(pady=10)
 
-# Function to exit the game
+# Тоглоомноос гарах функц
 def exit_game():
     root.destroy()
 
-# Button to exit the game
-exit_button = tk.Button(root, text="Exit", font=("Helvetica", 16), command=exit_game, bg="#f44336", fg="white")  # Red button with white text
+# Тоглоомноос гарах товч
+exit_button = tk.Button(root, text="Гарах", font=("Helvetica", 16), command=exit_game, bg="#E5DCCC", fg="black")
 exit_button.pack(pady=10)
 
 root.mainloop()
