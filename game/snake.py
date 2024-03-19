@@ -182,6 +182,8 @@ def start_game_window():
        
         time.sleep(delay)
 
+
+
 def start_game():
     start_game_window()
 
