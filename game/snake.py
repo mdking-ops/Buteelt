@@ -10,6 +10,8 @@ def start_game_window():
 
 
     delay = 0.05
+    # Game logic
+    delay = 0.075
 
     # Оноо
     score = 0
@@ -122,7 +124,7 @@ def start_game_window():
             segments.clear()
 
             score = 0
-            delay = 0.05
+            delay = 0.075
 
             score_display.clear()
             score_display.write("Оноо: {}  Хамгийн өндөр оноо: {}".format(score, high_score), align="center", font=("Helvetica", 24, "normal"))
@@ -172,7 +174,7 @@ def start_game_window():
                 segments.clear()
 
                 score = 0
-                delay = 0.05
+                delay = 0.075
 
                 score_display.clear()
                 score_display.write("Оноо: {}  Хамгийн өндөр оноо: {}".format(score, high_score), align="center", font=("Helvetica", 24, "normal"))
@@ -188,7 +190,7 @@ root.title("Game Menu")
 
 # Main menu хэсгийн window тохируулга урт , өргөн , дэлгэцний хаана гарч ирэх  
 game_width = 600
-game_height = 700
+game_height = 600
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 x_coordinate = (screen_width - game_width) // 2
