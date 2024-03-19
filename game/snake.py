@@ -65,7 +65,7 @@ def start_game_window():
     pen.hideturtle()
     pen.goto(0, 260)
 
-    score_display.write("Оноо: 0  Хамгийн өндөр оноо: 0", align="center", font=("Courier", 24, "normal"))
+    score_display.write("Оноо: 0  Хамгийн өндөр оноо: 0", align="center", font=("Helvetica", 24, "normal"))
 
     def go_up():
         if head.direction != "down":
@@ -190,7 +190,7 @@ root.title("Game Menu")
 
 # Main menu хэсгийн window тохируулга урт , өргөн , дэлгэцний хаана гарч ирэх  
 game_width = 600
-game_height = 600
+game_height = 700
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 x_coordinate = (screen_width - game_width) // 2
@@ -201,15 +201,12 @@ root.geometry(f"{game_width}x{game_height}+{x_coordinate}+{y_coordinate}")
 root.configure(bg="#fff5e3")  
 
 
-# Load the snake image using PhotoImage
-try:
-    image = PhotoImage(file="snake.png")  # Replace "snake.png" with your image path
-except FileNotFoundError:
-    print("Error: Image file 'snake.png' not found. Please check the path.")
-    exit()
+image = PhotoImage(file="C:\\Users\\snaxs\\OneDrive\\Documents\\Python snake\\Buteelt\\game\\snake.png")
+resized_image = image.subsample(4 , 4 )
 
-# Create a label to display the image
-image_label = tk.Label(root, image=image)
+
+# Зургын label
+image_label = tk.Label(root, image=resized_image, font=("Helvetica", 14), wraplength=game_width-40, bg="#fff5e3")
 image_label.pack(pady=20)
 
 #  Зааврын Label
