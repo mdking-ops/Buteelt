@@ -20,7 +20,7 @@ def calculate_study_time(start_date, end_date, hours_per_day):
 
     return total_study_hours
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     start_date = input(" Эхлэх Он сараа оруулна уу(Жил.Сар.Өдөр): ")
     end_date = input(" Төгсөх Он сараа оруулна уу(Жил.Сар.Өдөр): ")
     hours_per_day = float(input("Өдөрт хэдэн цаг сурах вэ?: "))
@@ -28,8 +28,6 @@ if _name_ == "_main_":
     total_study_hours = calculate_study_time(start_date, end_date, hours_per_day)
 
     print("Нийт сурсан цаг(Бүтэн сайныг оруулалгүйгээр): {:.2f} цаг".format(total_study_hours))
-Zorigt
-Zorigt Munhbaatar
 from datetime import datetime, timedelta
 
 def calculate_study_time(start_date, end_date, hours_per_day):
