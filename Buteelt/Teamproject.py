@@ -209,3 +209,6 @@ print("\n")
 
 print("2018 онд Их сургуульд орсон:")
 print(pd.DataFrame(new_uni_data))
+
+
+#03:49
