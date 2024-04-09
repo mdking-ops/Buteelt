@@ -2,55 +2,55 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 grade_dates = [
-    (datetime(1978, 9, 1), datetime(1979, 5, 31)),
-    (datetime(1979, 9, 1), datetime(1980, 5, 31)),
-    (datetime(1980, 9, 1), datetime(1981, 5, 31))
+    (datetime(1978, 9, 1), datetime(1979, 5,31)),
+    (datetime(1979, 9, 1), datetime(1980, 5,31)),
+    (datetime(1980, 9, 1), datetime(1981, 5,31))
 ]
 
 grade_dates_middle = [
-    (datetime(1981, 9, 1), datetime(1982, 5, 31)),
-    (datetime(1982, 9, 1), datetime(1983, 5, 31)),
-    (datetime(1983, 9, 1), datetime(1984, 5, 31)),
-    (datetime(1984, 9, 1), datetime(1985, 5, 31)),
-    (datetime(1985, 9, 1), datetime(1986, 5, 31))
+    (datetime(1981, 9, 1), datetime(1982, 5,31)),
+    (datetime(1982, 9, 1), datetime(1983, 5,31)),
+    (datetime(1983, 9, 1), datetime(1984, 5,31)),
+    (datetime(1984, 9, 1), datetime(1985, 5,31)),
+    (datetime(1985, 9, 1), datetime(1986,5,31))
 ]
 
 grade_dates_high = [
-    (datetime(1986, 9, 1), datetime(1987, 5, 31)),
-    (datetime(1987, 9, 1), datetime(1988, 5, 31))
+    (datetime(1986, 9, 1), datetime(1987, 5,31)),
+    (datetime(1987, 9, 1), datetime(1988, 5,31))
 ]
 
 univercity_ix=[
-    (datetime(1988, 9, 1), datetime(1989, 5, 31)),
-    (datetime(1989, 9, 1), datetime(1990, 5, 31)),
-    (datetime(1990, 9, 1), datetime(1991, 5, 31)),
-    (datetime(1991, 9, 1), datetime(1992, 5, 31)),
-    (datetime(1992 ,9,  1), datetime(1993, 5, 31))
+    (datetime(1988, 9, 1), datetime(1989, 5,31)),
+    (datetime(1989, 9, 1), datetime(1990, 5,31)),
+    (datetime(1990, 9, 1), datetime(1991, 5,31)),
+    (datetime(1991, 9, 1), datetime(1992, 5,31)),
+    (datetime(1992 ,9,  1), datetime(1993, 5,31))
 ]
 
 new_generation_grades = [
-    (datetime(2006, 9, 1), datetime(2007, 5, 31)),
-    (datetime(2007, 9, 1), datetime(2008, 5, 31)),
-    (datetime(2008, 9, 1), datetime(2009, 5, 31)),
-    (datetime(2009, 9, 1), datetime(2010, 5, 31)),
-    (datetime(2010, 9, 1), datetime(2011, 5, 31))
+    (datetime(2006, 9, 1), datetime(2007, 5,31)),
+    (datetime(2007, 9, 1), datetime(2008, 5,31)),
+    (datetime(2008, 9, 1), datetime(2009, 5,31)),
+    (datetime(2009, 9, 1), datetime(2010, 5,31)),
+    (datetime(2010, 9, 1), datetime(2011, 5,31))
 ]
 
 new_generation_high_grades = [
-    (datetime(2011, 9, 1), datetime(2012, 5, 31)),
-    (datetime(2012, 9, 1), datetime(2013, 5, 31)),
-    (datetime(2013, 9, 1), datetime(2014, 5, 31)),
-    (datetime(2014, 9, 1), datetime(2015, 5, 31)),
-    (datetime(2015, 9, 1), datetime(2016, 5, 31)),
-    (datetime(2016, 9, 1), datetime(2017, 5, 31)),
-    (datetime(2017, 9, 1), datetime(2018, 5, 31)),
+    (datetime(2011, 9, 1), datetime(2012, 5,31)),
+    (datetime(2012, 9, 1), datetime(2013, 5,31)),
+    (datetime(2013, 9, 1), datetime(2014, 5,31)),
+    (datetime(2014, 9, 1), datetime(2015, 5,31)),
+    (datetime(2015, 9, 1), datetime(2016, 5,31)),
+    (datetime(2016, 9, 1), datetime(2017, 5,31)),
+    (datetime(2017, 9, 1), datetime(2018, 5,31)),
 ]
 
 new_univer=[
-    (datetime(2018, 9, 1), datetime(2019, 5, 31)),
-    (datetime(2019, 9, 1), datetime(2020, 5, 31)),
-    (datetime(2020, 9, 1), datetime(2021, 5, 31)),
-    (datetime(2021, 9, 1), datetime(2022, 5, 31)),
+    (datetime(2018, 9, 1), datetime(2019, 5,31)),
+    (datetime(2019, 9, 1), datetime(2020, 5,31)),
+    (datetime(2020, 9, 1), datetime(2021, 5,31)),
+    (datetime(2021, 9, 1), datetime(2022, 5,31)),
 ]
 
 grade_data = []
@@ -62,7 +62,7 @@ new_uni_data = []
 def calculate_full_weeks_and_extra_days(year):
     start_date = datetime(year, 9, 1)  
     end_date = datetime(year + 1, 6, 1)  
-
+    
     while start_date.weekday() != 0:
         start_date += timedelta(days=1)
 
@@ -71,12 +71,16 @@ def calculate_full_weeks_and_extra_days(year):
         last_day -= timedelta(days=1)
 
 
-    full_weeks = (last_day - start_date).days // 7
-
+    full_weeks1 = (end_date-start_date).days // 7 
 
     extra_days_before = (start_date - datetime(year, 9, 1)).days
 
     extra_days_after = (datetime(year + 1, 6, 1) - last_day - timedelta(days=1)).days
+    
+    if extra_days_before == 0 :
+        full_weeks=full_weeks1
+    else:
+     full_weeks=full_weeks1-1
 
     return full_weeks, extra_days_before, extra_days_after
 
@@ -86,7 +90,7 @@ def calculate_studied_time(grade_dates, hours_per_day, start_index, end_index):
         working_days = len(date_range) - sum(1 for day in date_range if day.dayofweek >= 6)
         total_studied_minutes = working_days * hours_per_day * 60
 
-        full_weeks, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
+        real, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
         
         grade_data.append({
             'Анги': f'{i} Анги',
@@ -94,11 +98,11 @@ def calculate_studied_time(grade_dates, hours_per_day, start_index, end_index):
             'Төгсөх жил': end_date.strftime('%Y-%m-%d'),
             'Сурсан цаг (минут)': total_studied_minutes,
             'Ажлын өдөр': working_days,
-            'Нийт өдөр': len(date_range),
-            'Бүтэн долоо хоног': full_weeks,
-            'Сонирхосон хичээлийн цаг': full_weeks * 4,
-            'Эхний үеийн долоо хоног': extra_days_before,
-            'Сүүлийн үеийн долоо хоног': extra_days_after
+            #'Нийт өдөр': len(date_range),
+            'Бүтэн долоо хоног': real,
+             'Сонирхосон хичээлийн цаг': real * 4,
+            #'1нээс эхний даваа хүртэл': extra_days_before,
+            #'сүүлийн нямаас 1-н хүртэл': extra_days_after
         })
         
     return pd.DataFrame(grade_data)[start_index-1:end_index].sum()
@@ -111,7 +115,7 @@ def calculate_studied_time_univercity(grade_dates, hours_per_day, start_index, e
         total_studied_minutes = working_days * hours_per_day * 60
         
      
-        full_weeks, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
+        real, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
         
         uni_data.append({
             'Курс': f'{i} Курс',
@@ -120,7 +124,7 @@ def calculate_studied_time_univercity(grade_dates, hours_per_day, start_index, e
             'Сурсан цаг (минут)': total_studied_minutes,
             'Ажлын өдөр': working_days,
             'Нийт өдөр': len(date_range),
-            'Бүтэн долоо хоног': full_weeks,
+            'Бүтэн долоо хоног': real,
             'Дадлагийн эзлэх хувь': 48 / working_days
         })
 
@@ -130,7 +134,7 @@ def calculate_new_studied_time(grade_dates, hours_per_day, start_index, end_inde
         working_days = len(date_range) - sum(1 for day in date_range if day.dayofweek >= 5)
         total_studied_minutes = working_days * hours_per_day * 60
 
-        full_weeks, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
+        real, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
         
         new_grade_data.append({
             'Анги': f'{i} Анги',
@@ -139,8 +143,10 @@ def calculate_new_studied_time(grade_dates, hours_per_day, start_index, end_inde
             'Сурсан цаг (минут)': total_studied_minutes,
             'Ажлын өдөр': working_days,
             'Нийт өдөр': len(date_range),
-            'Бүтэн долоо хоног': full_weeks,
-            'Сонирхосон хичээлийн цаг': full_weeks * 4
+            'Бүтэн долоо хоног': real,
+        #'Сонирхосон хичээлийн цаг': real * 4,
+            '1нээс эхний даваа хүртэл': extra_days_before,
+            'сүүлийн нямаас 1-н хүртэл': extra_days_after
         })
 
 def calculate_new_studied_time_univercity(grade_dates, hours_per_day, start_index, end_index): 
@@ -150,7 +156,7 @@ def calculate_new_studied_time_univercity(grade_dates, hours_per_day, start_inde
         total_studied_minutes = working_days * hours_per_day * 60
         
 
-        full_weeks, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
+        real, extra_days_before, extra_days_after = calculate_full_weeks_and_extra_days(start_date.year)
         
         new_uni_data.append({
             'Курс': f'{i} Курс',
@@ -159,7 +165,7 @@ def calculate_new_studied_time_univercity(grade_dates, hours_per_day, start_inde
             'Сурсан цаг (минут)': total_studied_minutes,
             'Ажлын өдөр': working_days,
             'Нийт өдөр': len(date_range),
-            'Бүтэн долоо хоног': full_weeks,
+            'Бүтэн долоо хоног': real,
             'Дадлагийн эзлэх хувь': 40 / working_days
         })
 
