@@ -28,22 +28,16 @@ data = df.to_dict(orient='records')
 
 collection.insert_many(data)
 
-print("Verifying data in MongoDB...")
 mongo_data = list(collection.find())
 
 if len(mongo_data) > 0:
-    for document in mongo_data:
-        print(document)
-    
     it_data = [doc for doc in mongo_data if 'IT' in doc.get('ХЭЛТЭС', '')]
-    for document in it_data:
-        print(document)
-    other_data_ids = [doc['_id'] for doc in mongo_data if 'IT' not in doc.get('ХЭЛТЭС', '')]
-    result = collection.delete_many({'_id': {'$in': other_data_ids}})
-    
-else:
-    print("No data found in MongoDB. Data transfer might have failed.")
+
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';Trusted_Connection=yes;')
+    cursor = conn.cursor()
+    delete_query = "DELETE FROM EMPLOYEES WHERE ID IN ({})".format(','.join(str(row['ID']) for row in it_data))
+    cursor.execute(delete_query)
+    conn.commit()
+    conn.close()
 
 client.close()
-
-print("Process completed.")
